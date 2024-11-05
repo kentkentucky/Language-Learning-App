@@ -1,8 +1,6 @@
-# React + Vite
+# Language-Learning-App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Rocket Academy Frontend Application
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Building a language learning application with react.
+>>>>>>> 4e657d4f848171c4ff96e17e6378d3fda85a9b17
