@@ -1,0 +1,21 @@
+.language {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+}
+
+.btn-language {
+    background-color: #03DAC6;
+}
+
+.link-home {
+    color: black;
+    font-size: 1.3rem;
+    text-decoration: none;
+}
+
+.link-home:hover {
+    color: #FFFFFF;
+}

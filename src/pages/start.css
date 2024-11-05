@@ -1,0 +1,28 @@
+.homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+  
+.btn-start {
+    width: 15vw;
+    height: fit-content;
+}
+
+.link-language {
+    font-size: 1.5rem;
+    white-space: normal;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.link-language:hover {
+    color: black;
+}
+
+.homepage > p {
+    font-size: 1.3rem;
+    text-align: justify;
+    color: #FFFFFF;
+}
