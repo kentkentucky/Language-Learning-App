@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 import logo from '../images/book-icon.png';
 import heart from '../images/heart.png';
-import diamond from '../images/diamond.png'
+import diamond from '../images/diamond.png';
 
 import "./navbar.css"
 

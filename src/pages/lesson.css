@@ -74,3 +74,15 @@ button.matched {
     cursor: not-allowed;
     box-shadow: none;
 }
+
+@media only screen and (max-width: 450px) {
+    .options {
+        flex-direction: column;
+        gap: 2vh;
+    }
+
+    .container-column > button {
+        width: 35vw;
+        height: 15vh;
+    }
+}
