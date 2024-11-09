@@ -8,6 +8,7 @@ import App from '../src/App.jsx'
 import Start from '../src/pages/start.jsx'
 import Language from '../src/pages/language.jsx'
 import Home from '../src/pages/home.jsx'
+import Lesson from '../src/pages/lesson.jsx'
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
   {
     path: "home",
     element: <Home />,
+    errorElement: <div>404 Not Found</div>,
+  },
+  {
+    path: "lesson",
+    element: <Lesson />,
     errorElement: <div>404 Not Found</div>,
   },
 ]);

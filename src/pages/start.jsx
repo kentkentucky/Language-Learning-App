@@ -3,10 +3,16 @@ import Button from 'react-bootstrap/Button';
 
 import "./start.css";
 
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Start()
 {
+    let navigate = useNavigate();
+    const toLanguage = () => {
+        let path = "language";
+        navigate(path);
+    };
+
     return (
         <div className='homepage'>
             <p>
@@ -16,7 +22,7 @@ function Start()
                 Embark on your language journey today and discover the joy of becoming multilingual!
             </p>
             <img src={logo} alt='Book Logo' className='logo'></img>
-            <Button variant='success' className='btn-start'><Link to="./Language" className='link-language'>Get started</Link></Button>
+            <Button variant='success' className='btn-start' onClick={toLanguage}>Get started</Button>
         </div>
     );
 }

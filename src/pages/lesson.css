@@ -1,0 +1,76 @@
+.content-card {
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+    align-items: center;
+}
+
+.content-card > p {
+    font-size: 1.5rem;
+}
+
+.romaji {
+    color: #03DAC6;
+}
+
+.japanese {
+    color: #BB86FC;
+}
+
+.english {
+    color: #3700B3;
+}
+
+.content-card > button {
+    background-color: green;
+    width: 30vw;
+}
+
+.quiz-card > p {
+    font-size: 1.5rem;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+    gap: 5vw;
+    justify-content: center;
+}
+
+.options > button {
+    background-color: #BB86FC;
+}
+
+.question {
+    color: #3700B3;
+}
+
+.word {
+    color: #03DAC6;
+}
+
+.container-match {
+    display: flex;
+    flex-direction: row;
+    gap: 10vw;
+    justify-content: center;
+}
+
+.container-column {
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+}
+
+button.lit {
+    background-color: #03DAC6;
+    box-shadow: 0 0 10px #03DAC6, 0 0 20px #03DAC6;
+    color: #333;
+}
+
+button.matched {
+    background-color: #4CAF50; /* Green color for matched words */
+    color: white;
+    cursor: not-allowed;
+    box-shadow: none;
+}

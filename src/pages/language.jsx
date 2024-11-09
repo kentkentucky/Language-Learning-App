@@ -2,16 +2,25 @@ import "./language.css"
 
 import Button from 'react-bootstrap/Button';
 
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+import { levels_j, lessons_j } from "../data/japanese";
+import { levels_c } from "../data/chinese";
+import { levels_k } from "../data/korean";
 
 function Language()
 {
+    let navigate = useNavigate();
+    const toHome = (levelData, wordData) => {
+        navigate("/home", { state: { level: levelData, lesson: wordData } });
+    };
+
     return (
         <form className="language">
             <h1>Pick a language you want to learn: </h1>
-            <Button size="lg" className="btn-language"><Link to="/Home" className="link-home">Japanese</Link></Button>
-            <Button size="lg" className="btn-language"><Link to="/Home" className="link-home">Chinese</Link></Button>
-            <Button size="lg" className="btn-language"><Link to="/Home" className="link-home">Korean</Link></Button>
+            <Button size="lg" className="btn-language" onClick={() => toHome(levels_j, lessons_j)}>Japanese</Button>
+            <Button size="lg" className="btn-language" onClick={() => toHome(levels_c)}>Chinese</Button>
+            <Button size="lg" className="btn-language" onClick={() => toHome(levels_k)}>Korean</Button>
         </form>
     );
 }

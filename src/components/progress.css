@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", serif;
+    font-weight: 500;
+    font-style: normal;
+    color: white;
+}
+
+.container-progress {
+    margin: 12vh 2rem 2rem 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2vw;
+}
+
+.stepper-level {
+    width: 100%;
+}
+
+.stepper-container {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-items: center;
+    margin-bottom: 5rem;
+}
+
+.level-number {
+    height: 8rem;
+    width: 8rem;
+    border-radius: 50%;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    font-size: 2rem;
+}
+
+.level-number:hover {
+    background-color: #03DAC6;
+}
+
+.level-label {
+    font-size: 1.3rem;
+}
+
+.step-line {
+    height: 5rem;
+    width: 2px;
+    background-color: grey;
+    position: absolute;
+    top: 8rem;
+}
+
+.active {
+    background-color: #BB86FC;
+    box-shadow: 0 0 30px #ccc;
+}
+
+.modal-header {
+    border-color: #BB86FC;
+}
+
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #BB86FC;
+    border-color: #BB86FC;
+}
+
+.modal-button {
+    width: 10vw;
+    height: 5vh;
+}
+
+@media only screen and (max-width: 450px) {
+    * {
+        font-weight: 400;
+        font-style: normal;
+        color: white;
+    }
+
+    .level-number {
+        height: 6rem;
+        width: 6rem;
+        font-size: 1rem;
+    }
+
+    .step-line {
+        height: 8rem;
+        width: 2px;
+        background-color: grey;
+        position: absolute;
+        top: 5.9rem;
+    }
+
+    .level-label {
+        font-size: 1rem;
+        text-align: center;
+    }
+}
