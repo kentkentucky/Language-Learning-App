@@ -157,7 +157,7 @@ function Lesson() {
         else
         {
             setIsWrong(true);
-            setTimeout(() => setIsWrong(false), 500);
+            setTimeout(() => setIsWrong(false), 100);
         }
         setEnWord(null);
         setJpWord(null);
