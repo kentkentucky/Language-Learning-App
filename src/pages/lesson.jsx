@@ -29,6 +29,7 @@ function Lesson() {
     const [jpClicked, setJpClicked] = useState(null);
     const [matchedWords, setMatchedWords] = useState([]);
     const [hasEnded, setHasEnded] = useState(false);
+    const [isWrong, setIsWrong] = useState(false);
 
     const nextCard = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1));
@@ -132,7 +133,7 @@ function Lesson() {
                             ))}
                         </div>
                         <Modal show={show} aria-labelledby="contained-modal-title-vcenter" centered>
-                            <Modal.Header>
+                            <Modal.Header className={isCorrect ? "correct" : "incorrect"}>
                                 <Modal.Title id="contained-modal-title-vcenter">{isCorrect ? "Correct!" : "Wrong!"}</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>{isCorrect ? "Well Done!" : `Answer: ${quizDeck[currentIndex].english}`}</Modal.Body>
@@ -155,7 +156,8 @@ function Lesson() {
         }
         else
         {
-            console.log("mismatch");
+            setIsWrong(true);
+            setTimeout(() => setIsWrong(false), 500);
         }
         setEnWord(null);
         setJpWord(null);
@@ -181,28 +183,28 @@ function Lesson() {
         if(currentGameState == 2)
         {
             return (
-                <div className="container-match">
-                    <div className="container-column" key="english">
+                <div className={`container-match ${isWrong ? "incorrect" : ""}`}>
+                    <div className={`container-column ${isWrong ? "incorrect" : ""}`} key="english">
                         {wordDeck.map((word) => (
                             <button key={word.english} onClick={(e) => {
                                 e.preventDefault(); 
                                 setEnWord(word); 
                                 setEnClicked(word.english);
                             }} 
-                                className={`${enClicked == word.english ? "lit" : ""} ${matchedWords.includes(word.english) ? 'matched' : ''}`} disabled={matchedWords.includes(word.english)}
+                                className={`${enClicked == word.english ? "lit" : ""} ${matchedWords.includes(word.english) ? 'matched' : ''} ${isWrong ? "incorrect" : ""}`} disabled={matchedWords.includes(word.english)}
                             >
                                 {word.english}
                             </button>
                         ))}
                     </div>
-                    <div className="container-column" key="japanese">
+                    <div className={`container-column ${isWrong ? "incorrect" : ""}`} key="japanese">
                         {quizDeck.map((word) => (
                             <button key={word.english} onClick={(e) => {
                                 e.preventDefault(); 
                                 setJpWord(word); 
                                 setJpClicked(word.english);
                             }} 
-                                className={`${jpClicked == word.english ? "lit" : ""} ${matchedWords.includes(word.english) ? 'matched' : ''}`} disabled={matchedWords.includes(word.english)}
+                                className={`${jpClicked == word.english ? "lit" : ""} ${matchedWords.includes(word.english) ? 'matched' : ''} ${isWrong ? "incorrect" : ""}`} disabled={matchedWords.includes(word.english)}
                             >
                                 {word.romaji}
                                 {word.japanese}

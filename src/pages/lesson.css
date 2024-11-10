@@ -75,6 +75,26 @@ button.matched {
     box-shadow: none;
 }
 
+button.incorrect {
+    background-color: #CF6679;
+}
+
+.container-match.incorrect {
+    background: #CF6679;
+}
+
+.container-column.incorrect {
+    background-color: #CF6679;
+}
+
+.incorrect {
+    color: #CF6679;
+}
+
+.correct {
+    color: green;
+}
+
 @media only screen and (max-width: 450px) {
     .options {
         flex-direction: column;
