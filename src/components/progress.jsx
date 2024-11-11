@@ -60,7 +60,7 @@ function Progress({ steps, words })
                                         </p>
                                     </Modal.Body>
                                     <Modal.Footer className='modal-footer'>
-                                        <Button className='modal-button' style={{ display: checkActive() ? "block" : "none" }} onClick={() => {setCurrentLevel((currentLevel + 1)); toLesson(words[buttonIndex]); }}>Play</Button>
+                                        <Button className='modal-button' style={{ display: checkActive() ? "block" : "none" }} onClick={() => {setCurrentLevel(currentLevel + 1); toLesson(words[buttonIndex]); }}>Play</Button>
                                         <Button onClick={() => setModalShow(false)} className='modal-button'>Close</Button>
                                     </Modal.Footer>
                                 </Modal>

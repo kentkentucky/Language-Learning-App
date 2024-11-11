@@ -30,11 +30,13 @@ const router = createBrowserRouter([
     path: "home",
     element: <Home />,
     errorElement: <div>404 Not Found</div>,
-  },
-  {
-    path: "lesson",
-    element: <Lesson />,
-    errorElement: <div>404 Not Found</div>,
+    children: [
+      {
+        path: "lesson",
+        element: <Lesson />,
+        errorElement: <div>404 Not Found</div>,
+      },
+    ],
   },
 ]);
 

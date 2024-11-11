@@ -11,8 +11,6 @@ import "./lesson.css"
 
 function Lesson() {
 
-    let navigate = useNavigate();
-
     const location = useLocation();
     const lessonWords = location.state.lesson;
 
@@ -30,6 +28,11 @@ function Lesson() {
     const [matchedWords, setMatchedWords] = useState([]);
     const [hasEnded, setHasEnded] = useState(false);
     const [isWrong, setIsWrong] = useState(false);
+
+    let navigate = useNavigate();
+    const backHome = () => {
+        navigate("/home");
+    };
 
     const nextCard = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1));
@@ -214,10 +217,6 @@ function Lesson() {
                 </div>
             );
         }
-    };
-
-    const backHome = () => {
-        navigate("/home");
     };
 
     return (
