@@ -8,8 +8,8 @@ function Home()
 {
 
     const location = useLocation();
-    const [levels, setLevels] = useState(null);
-    const [lessons, setLessons] = useState(null);
+    const [levels, setLevels] = useState(null); // instead of null, I would always the empty data type this uses. [], {}, "", 0 etc.
+    const [lessons, setLessons] = useState(null); // By doing that there will be no confusion about the datatype this state should hold
 
     // Save data to localStorage when the component is mounted
     useEffect(() => {
@@ -33,6 +33,8 @@ function Home()
             } 
             else {
                 // Handle the case where no data is available
+                // Did you handle the case? A console log seems not really like handling it yet to me :)!
+                // From what I can see this would be rendering the Loading component indefinitely
                 console.log("No data found in location or localStorage");
             }
         }

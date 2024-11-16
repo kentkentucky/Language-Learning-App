@@ -1,3 +1,4 @@
+// Nice use of data structures
 const levels_j = [
     {
         label: "Japanese Greetings Part 1",

@@ -20,3 +20,5 @@ const shuffleWords = (words) => {
 };
 
 export { shuffleWords, getRandomIndex };
+
+// This file only contains JS, no components. So it should be `shuffle.js` instead of .jsx
