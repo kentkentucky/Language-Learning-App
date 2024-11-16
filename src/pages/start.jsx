@@ -5,6 +5,7 @@ import "./start.css";
 
 import { useNavigate } from 'react-router-dom';
 
+// Component names are always capital, that's right. But Filenames should follow the same practice.
 function Start()
 {
     let navigate = useNavigate();

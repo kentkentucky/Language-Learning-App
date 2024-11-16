@@ -10,6 +10,7 @@ import Language from '../src/pages/language.jsx'
 import Home from '../src/pages/home.jsx'
 import Lesson from '../src/pages/lesson.jsx'
 
+// Great job using react router!
 const router = createBrowserRouter([
   {
     path: "/",

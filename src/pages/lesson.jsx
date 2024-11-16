@@ -18,11 +18,12 @@ function Lesson() {
 
     const [wordDeck, setWordDeck] = useState(lessonWords.words);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [currentGameState, setCurrentGameState] = useState(0);
+    const [currentGameState, setCurrentGameState] = useState(0); // why is game state a number?
     const [quizDeck, setQuizDeck] = useState([]);
     const [optionDeck, setOptionDeck] = useState([]);
     const [show, setShow] = useState(false);
     const [isCorrect, setIsCorrect] = useState(null);
+    // since you app is supposed to also support korean and chinese, I think we shouldn't name state fixed to a specific language and write it more general purpose
     const [enWord, setEnWord] = useState(null);
     const [jpWord, setJpWord] = useState(null);
     const [enClicked, setEnClicked] = useState(null);
@@ -37,6 +38,7 @@ function Lesson() {
         setIsCorrect(null);
     };
 
+    // What is a next game state? I think naming could be improved here. e.g. displayNextPage, displayNextLessonType or something along those lines
     const nextGameState = () => {
         setCurrentGameState((prevGameState) => (prevGameState + 1));
         setCurrentIndex(0);
@@ -45,26 +47,23 @@ function Lesson() {
         setShow(false);
     };
 
+    // what does it check? Can be a bit more specific
     const checkWordDeck = () => {
-        if(currentIndex == (wordDeck.length - 1))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return currentIndex == wordDeck.length - 1
     };
 
+    // this is a component, defined within a component. I wouldn't recommend this. I would define this outside of the component and pass wordDeck as prop
     const lessonContent = () => {
-        if(currentGameState == 0)
+        if(!currentGameState)
         {
             return (
                 <div className="content">
                     <div className="content-card">
+                        {/* Can create a reusable component for this p tag */}
                         <p className="romaji">Romaji: {wordDeck[currentIndex].romaji}</p>
                         <p className="japanese">Japanese: {wordDeck[currentIndex].japanese}</p>
                         <p className="english">English: {wordDeck[currentIndex].english}</p>
+                        {/* Since you run checkWordDeck() twice here, I recommend using a variable in which you store its result, then use at the desired spots in your code */}
                         <button onClick={(e) => {e.preventDefault(); checkWordDeck() ? nextGameState() : nextCard();}}>{ checkWordDeck() ? "Next" : "Got it!" }</button>
                     </div>
                 </div>
@@ -72,14 +71,17 @@ function Lesson() {
         }
     };
 
-    useEffect(() => {
-        if(quizDeck.length > 0) 
+    // A rule in React is, to always place all hooks at the top of the component. So place useEffect directly under you useState definitions
+    // since there is more syntax going on here, i would recommend making this a named function so I don't need to read the whole code to understand what is happening
+    useEffect(function createQuizOptionsDeck() {
+        if(quizDeck.length) 
         {
             let options = createQuizOptions(quizDeck[currentIndex].english);
             setOptionDeck(options);
         }
     }, [currentIndex, quizDeck]);
 
+    // this can be defined outside of the component, maybe in another file. We don't use any state here aside from quizDeck, which we can get via a function argument instead
     const createQuizOptions = (answer) => {
         let options = [answer];
         while(options.length < 4)
@@ -95,29 +97,19 @@ function Lesson() {
     }
 
     const checkAnswer = (option) => {
-        if(option == quizDeck[currentIndex].english)
-        {
-            setIsCorrect(true);
-            setShow(true);
+        if(option == quizDeck[currentIndex].english) {
+            setIsCorrect(true)
+            return setShow(true)
         }
-        else
-        {
-            setIsCorrect(false);
-            setShow(true);
-        }
+        setIsCorrect(false)
+        setShow(true)
     }
 
     const checkQuizDeck = () => {
-        if(currentIndex == (quizDeck.length - 1))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return currentIndex == (quizDeck.length - 1)
     };
 
+    // should be a separate component
     const quiz = () => {
         if(currentGameState == 1)
         {
@@ -157,7 +149,7 @@ function Lesson() {
         else
         {
             setIsWrong(true);
-            setTimeout(() => setIsWrong(false), 100);
+            setTimeout(() => setIsWrong(false), 100); // why implement a delay here?
         }
         setEnWord(null);
         setJpWord(null);
@@ -191,6 +183,8 @@ function Lesson() {
                                 setEnWord(word); 
                                 setEnClicked(word.english);
                             }} 
+                            // enClicked sounds like a boolean, but seems to be a string
+                            // I recommend something like clickedEnglishWord instead
                                 className={`${enClicked == word.english ? "lit" : ""} ${matchedWords.includes(word.english) ? 'matched' : ''} ${isWrong ? "incorrect" : ""}`} disabled={matchedWords.includes(word.english)}
                             >
                                 {word.english}
@@ -227,6 +221,7 @@ function Lesson() {
             {lessonContent()}
             {quiz()}
             {matchWords()}
+            {/* Modal should be own component */}
             <Modal show={hasEnded} aria-labelledby="contained-modal-title-vcenter" centered>
                 <Modal.Header>
                     <Modal.Title id="contained-modal-title-vcenter">End of Lesson</Modal.Title>
