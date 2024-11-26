@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-import { shuffleWords, getRandomIndex } from "../components/shuffle";
+import { shuffleWords, getRandomIndex } from "../components/shuffle.js";
 import { useLevel } from "../components/levelController";
 
 import "./lesson.css"
@@ -31,6 +31,20 @@ function Lesson() {
     const [hasEnded, setHasEnded] = useState(false);
     const [isWrong, setIsWrong] = useState(false);
 
+    useEffect(() => {
+        if(quizDeck.length > 0) 
+        {
+            let options = createQuizOptions(quizDeck[currentIndex].english);
+            setOptionDeck(options);
+        }
+    }, [currentIndex, quizDeck]);
+
+    useEffect(() => {
+        if (enWord && tpWord) {
+          checkMatch();
+        }
+    }, [enWord, tpWord]);
+
     let navigate = useNavigate();
     const backHome = () => {
         navigate("/home");
@@ -51,14 +65,7 @@ function Lesson() {
     };
 
     const checkWordDeck = () => {
-        if(currentIndex == (wordDeck.length - 1))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return currentIndex == wordDeck.length - 1;
     };
 
     const lessonContent = () => {
@@ -76,14 +83,6 @@ function Lesson() {
             );
         }
     };
-
-    useEffect(() => {
-        if(quizDeck.length > 0) 
-        {
-            let options = createQuizOptions(quizDeck[currentIndex].english);
-            setOptionDeck(options);
-        }
-    }, [currentIndex, quizDeck]);
 
     const createQuizOptions = (answer) => {
         let options = [answer];
@@ -103,24 +102,14 @@ function Lesson() {
         if(option == quizDeck[currentIndex].english)
         {
             setIsCorrect(true);
-            setShow(true);
+            return setShow(true);
         }
-        else
-        {
-            setIsCorrect(false);
-            setShow(true);
-        }
+        setIsCorrect(false);
+        setShow(true);
     }
 
     const checkQuizDeck = () => {
-        if(currentIndex == (quizDeck.length - 1))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return currentIndex == (quizDeck.length - 1);
     };
 
     const quiz = () => {
@@ -170,12 +159,6 @@ function Lesson() {
         setTpClicked(null);
         checkMatchedWords();
     }
-
-    useEffect(() => {
-        if (enWord && tpWord) {
-          checkMatch();
-        }
-    }, [enWord, tpWord]);
 
     const checkMatchedWords = () => {
         if(matchedWords.length == wordDeck.length - 1)

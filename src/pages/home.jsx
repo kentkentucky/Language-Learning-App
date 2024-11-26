@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 function Home()
 {
     const location = useLocation();
-    const [levels, setLevels] = useState(null);
-    const [lessons, setLessons] = useState(null);
+    const [levels, setLevels] = useState([]);
+    const [lessons, setLessons] = useState([]);
 
     // Save data to localStorage when the component is mounted
     useEffect(() => {
