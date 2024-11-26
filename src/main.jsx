@@ -10,6 +10,8 @@ import Language from '../src/pages/language.jsx'
 import Home from '../src/pages/home.jsx'
 import Lesson from '../src/pages/lesson.jsx'
 
+import { LevelProvider } from './components/levelController.jsx'
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,18 +33,21 @@ const router = createBrowserRouter([
     element: <Home />,
     errorElement: <div>404 Not Found</div>,
     children: [
-      {
-        path: "lesson",
-        element: <Lesson />,
-        errorElement: <div>404 Not Found</div>,
-      },
+      
     ],
+  },
+  {
+    path: "lesson",
+    element: <Lesson />,
+    errorElement: <div>404 Not Found</div>,
   },
 ]);
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <LevelProvider>
+      <RouterProvider router={router} />
+    </LevelProvider>
   </StrictMode>,
 )

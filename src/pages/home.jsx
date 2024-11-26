@@ -2,11 +2,10 @@ import NavBar from "../components/navbar";
 import Progress from "../components/progress";
 
 import { useLocation } from "react-router-dom";
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 function Home()
 {
-
     const location = useLocation();
     const [levels, setLevels] = useState(null);
     const [lessons, setLessons] = useState(null);
@@ -46,7 +45,7 @@ function Home()
     return (
         <>
             <NavBar />
-            <Progress steps={levels} words={lessons}/>
+            <Progress steps={levels} words={lessons} />
         </>
     );
 }

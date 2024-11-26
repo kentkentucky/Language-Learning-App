@@ -13,4 +13,31 @@ const levels_c = [
     },
 ];
 
-export { levels_c };
+const lessons_c = [
+    {
+        id: 1,
+        title: "Greetings in Chinese",
+        overview: "Learn common Chinese greetings used in everyday situations, from casual to formal settings.",
+        words: [
+            { english: "Hello", text: "你好", pronunciation: "Nǐ hǎo" },
+            { english: "Good morning", text: "早上好", pronunciation: "Zǎo shàng hǎo" },
+            { english: "Good evening", text: "晚上好", pronunciation: "Wǎn shàng hǎo" },
+            { english: "Goodbye", text: "再见", pronunciation: "Zài jiàn" },
+            { english: "Nice to meet you", text: "很高兴认识你", pronunciation: "Hěn gāo xìng rèn shí nǐ" },
+        ]
+    },
+    {
+        id: 2,
+        title: "More Greetings in Chinese",
+        overview: "Expand your knowledge with additional greetings and polite phrases in Chinese.",
+        words: [
+            { english: "Good night", text: "晚安", pronunciation: "Wǎn ān" },
+            { english: "I'm leaving", text: "我走了", pronunciation: "Wǒ zǒu le" },
+            { english: "How are you?", text: "你好吗?", pronunciation: "Nǐ hǎo ma?" },
+            { english: "I'm back", text: "我回来了", pronunciation: "Wǒ huí lái le" },
+            { english: "Welcome back", text: "欢迎回来", pronunciation: "Huān yíng huí lái" }
+        ]
+    },
+];
+
+export { levels_c, lessons_c };

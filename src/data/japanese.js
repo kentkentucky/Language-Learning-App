@@ -23,11 +23,11 @@ const lessons_j = [
         title: "Greetings In Japanese",
         overview: "Learn common Japanese greetings used in everyday situations, from casual to formal settings.",
         words: [
-            { english: "Hello", japanese: "こんにちは", romaji: "Konnichiwa", },
-            { english: "Good morning", japanese: "おはようございます", romaji: "Ohayou gozaimasu" },
-            { english: "Good evening", japanese: "こんばんは", romaji: "Konbanwa" },
-            { english: "Goodbye", japanese: "さようなら", romaji: "Sayounara" },
-            { english: "Nice to meet you", japanese: "はじめまして", romaji: "Hajimemashite" },
+            { english: "Hello", text: "こんにちは", pronunciation: "Konnichiwa", },
+            { english: "Good morning", text: "おはようございます", pronunciation: "Ohayou gozaimasu" },
+            { english: "Good evening", text: "こんばんは", pronunciation: "Konbanwa" },
+            { english: "Goodbye", text: "さようなら", pronunciation: "Sayounara" },
+            { english: "Nice to meet you", text: "はじめまして", pronunciation: "Hajimemashite" },
         ]
     },
     {
@@ -35,11 +35,11 @@ const lessons_j = [
         title: "Greetings In Japanese",
         overview: "Learn common Japanese greetings used in everyday situations, from casual to formal settings.",
         words: [
-            { english: "Good night", japanese: "おやすみなさい", romaji: "Oyasuminasai" },
-            { english: "I'm leaving", japanese: "いってきます", romaji: "Ittekimasu" },
-            { english: "Please go and come back", japanese: "いってらっしゃい", romaji: "Itterasshai" },
-            { english: "I'm back", japanese: "ただいま", romaji: "Tadaima" },
-            { english: "Welcome back", japanese: "おかえりなさい", romaji: "Okaerinasai" }
+            { english: "Good night", text: "おやすみなさい", pronunciation: "Oyasuminasai" },
+            { english: "I'm leaving", text: "いってきます", pronunciation: "Ittekimasu" },
+            { english: "Please go and come back", text: "いってらっしゃい", pronunciation: "Itterasshai" },
+            { english: "I'm back", text: "ただいま", pronunciation: "Tadaima" },
+            { english: "Welcome back", text: "おかえりなさい", pronunciation: "Okaerinasai" }
         ]
     },
     {
@@ -47,12 +47,12 @@ const lessons_j = [
         title: "Self-Introduction In Japanese",
         overview: "Learn phrases to introduce yourself, talk about your name, nationality, and more in Japanese.",
         words: [
-            { english: "My name is...", japanese: "私の名前は...", romaji: "Watashi no namae wa..." },
-            { english: "I am (nationality)", japanese: "私は (nationality) です", romaji: "Watashi wa (nationality) desu" },
-            { english: "Pleased to meet you", japanese: "よろしくお願いします", romaji: "Yoroshiku onegaishimasu" },
-            { english: "I am a student", japanese: "私は学生です", romaji: "Watashi wa gakusei desu" },
-            { english: "I live in...", japanese: "私は...に住んでいます", romaji: "Watashi wa... ni sundeimasu" },
-            { english: "I am X years old", japanese: "私はX歳です", romaji: "Watashi wa X-sai desu" }
+            { english: "My name is...", text: "私の名前は...", pronunciation: "Watashi no namae wa..." },
+            { english: "I am (nationality)", text: "私は (nationality) です", pronunciation: "Watashi wa (nationality) desu" },
+            { english: "Pleased to meet you", text: "よろしくお願いします", pronunciation: "Yoroshiku onegaishimasu" },
+            { english: "I am a student", text: "私は学生です", pronunciation: "Watashi wa gakusei desu" },
+            { english: "I live in...", text: "私は...に住んでいます", pronunciation: "Watashi wa... ni sundeimasu" },
+            { english: "I am X years old", text: "私はX歳です", pronunciation: "Watashi wa X-sai desu" }
         ]
     },
     {
@@ -60,16 +60,16 @@ const lessons_j = [
         title: "Conversing In Japanese",
         overview: "Learn basic phrases for engaging in simple conversations, asking questions, and responding politely.",
         words: [
-            { english: "How are you?", japanese: "お元気ですか？", romaji: "Ogenki desu ka?" },
-            { english: "I am fine", japanese: "元気です", romaji: "Genki desu" },
-            { english: "Thank you", japanese: "ありがとうございます", romaji: "Arigatou gozaimasu" },
-            { english: "You're welcome", japanese: "どういたしまして", romaji: "Douitashimashite" },
-            { english: "Excuse me / I'm sorry", japanese: "すみません", romaji: "Sumimasen" },
-            { english: "Please", japanese: "お願いします", romaji: "Onegaishimasu" },
-            { english: "Yes", japanese: "はい", romaji: "Hai" },
-            { english: "No", japanese: "いいえ", romaji: "Iie" },
-            { english: "What is this?", japanese: "これは何ですか？", romaji: "Kore wa nan desu ka?" },
-            { english: "I don't understand", japanese: "わかりません", romaji: "Wakarimasen" }
+            { english: "How are you?", text: "お元気ですか？", pronunciation: "Ogenki desu ka?" },
+            { english: "I am fine", text: "元気です", pronunciation: "Genki desu" },
+            { english: "Thank you", text: "ありがとうございます", pronunciation: "Arigatou gozaimasu" },
+            { english: "You're welcome", text: "どういたしまして", pronunciation: "Douitashimashite" },
+            { english: "Excuse me / I'm sorry", text: "すみません", pronunciation: "Sumimasen" },
+            { english: "Please", text: "お願いします", pronunciation: "Onegaishimasu" },
+            { english: "Yes", text: "はい", pronunciation: "Hai" },
+            { english: "No", text: "いいえ", pronunciation: "Iie" },
+            { english: "What is this?", text: "これは何ですか？", pronunciation: "Kore wa nan desu ka?" },
+            { english: "I don't understand", text: "わかりません", pronunciation: "Wakarimasen" }
         ]
     }
 ];

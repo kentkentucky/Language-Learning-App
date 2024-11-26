@@ -3,18 +3,19 @@ import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useLevel } from './levelController';
 
 import "./progress.css";
 
-function Progress({ steps, words })
+function Progress({ steps, words})
 {
-    const [currentLevel, setCurrentLevel] = useState(0);
+    const [currentLevel, setCurrentLevel] = useLevel();
     const [modalShow, setModalShow] = useState(false);
     const [buttonIndex, setButtonIndex] = useState(0);
 
     let navigate = useNavigate();
     const toLesson = (words) => {
-        navigate("/lesson", {state: {lesson: words}});
+        navigate("/lesson", {state: { lesson: words }});
     };
 
     const handleClick = (index) => {
@@ -60,7 +61,7 @@ function Progress({ steps, words })
                                         </p>
                                     </Modal.Body>
                                     <Modal.Footer className='modal-footer'>
-                                        <Button className='modal-button' style={{ display: checkActive() ? "block" : "none" }} onClick={() => {setCurrentLevel(currentLevel + 1); toLesson(words[buttonIndex]); }}>Play</Button>
+                                        <Button className='modal-button' style={{ display: checkActive() ? "block" : "none" }} onClick={(e) => {e.preventDefault(); toLesson(words[buttonIndex]);}}>Play</Button>
                                         <Button onClick={() => setModalShow(false)} className='modal-button'>Close</Button>
                                     </Modal.Footer>
                                 </Modal>

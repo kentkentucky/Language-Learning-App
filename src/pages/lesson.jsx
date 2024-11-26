@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 import { shuffleWords, getRandomIndex } from "../components/shuffle";
+import { useLevel } from "../components/levelController";
 
 import "./lesson.css"
 
@@ -14,6 +15,7 @@ function Lesson() {
     const location = useLocation();
     const lessonWords = location.state.lesson;
 
+    const [currentLevel, setCurrentLevel] = useLevel();
     const [wordDeck, setWordDeck] = useState(lessonWords.words);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [currentGameState, setCurrentGameState] = useState(0);
@@ -22,9 +24,9 @@ function Lesson() {
     const [show, setShow] = useState(false);
     const [isCorrect, setIsCorrect] = useState(null);
     const [enWord, setEnWord] = useState(null);
-    const [jpWord, setJpWord] = useState(null);
+    const [tpWord, setTpWord] = useState(null);
     const [enClicked, setEnClicked] = useState(null);
-    const [jpClicked, setJpClicked] = useState(null);
+    const [tpClicked, setTpClicked] = useState(null);
     const [matchedWords, setMatchedWords] = useState([]);
     const [hasEnded, setHasEnded] = useState(false);
     const [isWrong, setIsWrong] = useState(false);
@@ -65,8 +67,8 @@ function Lesson() {
             return (
                 <div className="content">
                     <div className="content-card">
-                        <p className="romaji">Romaji: {wordDeck[currentIndex].romaji}</p>
-                        <p className="japanese">Japanese: {wordDeck[currentIndex].japanese}</p>
+                        <p className="romaji">Pronunciation: {wordDeck[currentIndex].pronunciation}</p>
+                        <p className="japanese">Text: {wordDeck[currentIndex].text}</p>
                         <p className="english">English: {wordDeck[currentIndex].english}</p>
                         <button onClick={(e) => {e.preventDefault(); checkWordDeck() ? nextGameState() : nextCard();}}>{ checkWordDeck() ? "Next" : "Got it!" }</button>
                     </div>
@@ -128,8 +130,8 @@ function Lesson() {
                 <div className="quiz">
                     <div className="quiz-card">
                         <p className="question">Pick the correct meaning!</p>
-                        <p className="word">Romaji: {quizDeck[currentIndex].romaji}</p>
-                        <p className="word">Japanese: {quizDeck[currentIndex].japanese}</p>
+                        <p className="word">Pronunciation: {quizDeck[currentIndex].pronunciation}</p>
+                        <p className="word">Text: {quizDeck[currentIndex].text}</p>
                         <div className="options">
                             {optionDeck.map((option, index) => (
                                 <button key={index} onClick={(e) => {e.preventDefault(); checkAnswer(optionDeck[index])}}>{option}</button>
@@ -153,7 +155,7 @@ function Lesson() {
     }
 
     const checkMatch = () => {
-        if(enWord.english == jpWord.english)
+        if(enWord.english == tpWord.english)
         {
             setMatchedWords([...matchedWords, enWord.english]);
         }
@@ -163,17 +165,17 @@ function Lesson() {
             setTimeout(() => setIsWrong(false), 100);
         }
         setEnWord(null);
-        setJpWord(null);
+        setTpWord(null);
         setEnClicked(null);
-        setJpClicked(null);
+        setTpClicked(null);
         checkMatchedWords();
     }
 
     useEffect(() => {
-        if (enWord && jpWord) {
+        if (enWord && tpWord) {
           checkMatch();
         }
-    }, [enWord, jpWord]);
+    }, [enWord, tpWord]);
 
     const checkMatchedWords = () => {
         if(matchedWords.length == wordDeck.length - 1)
@@ -204,13 +206,13 @@ function Lesson() {
                         {quizDeck.map((word) => (
                             <button key={word.english} onClick={(e) => {
                                 e.preventDefault(); 
-                                setJpWord(word); 
-                                setJpClicked(word.english);
+                                setTpWord(word); 
+                                setTpClicked(word.english);
                             }} 
-                                className={`${jpClicked == word.english ? "lit" : ""} ${matchedWords.includes(word.english) ? 'matched' : ''} ${isWrong ? "incorrect" : ""}`} disabled={matchedWords.includes(word.english)}
+                                className={`${tpClicked == word.english ? "lit" : ""} ${matchedWords.includes(word.english) ? 'matched' : ''} ${isWrong ? "incorrect" : ""}`} disabled={matchedWords.includes(word.english)}
                             >
-                                {word.romaji}
-                                {word.japanese}
+                                {word.pronunciation}
+                                {word.text}
                             </button>
                         ))}
                     </div>
@@ -232,7 +234,7 @@ function Lesson() {
                 </Modal.Header>
                 <Modal.Body>Good job for completing the lesson! You did well!</Modal.Body>
                 <Modal.Footer>
-                <Button variant="primary" onClick={() => backHome()}>End</Button>
+                <Button variant="primary" onClick={(e) => {e.preventDefault(); setCurrentLevel(currentLevel + 1); backHome(); }}>End</Button>
                 </Modal.Footer>
             </Modal>
         </>
