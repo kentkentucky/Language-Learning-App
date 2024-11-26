@@ -24,14 +24,7 @@ function Progress({ steps, words})
     };
 
     let checkActive = () => {
-        if(currentLevel == buttonIndex)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return currentLevel == buttonIndex ? true : false;
     }
 
     return (
